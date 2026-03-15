@@ -1,17 +1,17 @@
 pipeline{
     agent any
-    environment{
+    environment {
         APP_NAME = "demo-app"
     }
-    stages{
-      stage("Checkout"){
+    stages {
+      stage('Checkout') {
         steps{
           echo "checking out code from github"
           checkout scm
         }
       }
-      stage("Build"){
-          steps{
+      stage('Build') {
+          steps {
               echo "Building ${APP_NAME}"
               sh '''
                echo "Stimulating Build..."
@@ -19,8 +19,8 @@ pipeline{
                '''
             }
       }
-      stage("test"){
-        steps{
+      stage('test') {
+        steps {
               echo "Running tests"
               sh '''
                echo "Stimulating Build..."
@@ -28,25 +28,25 @@ pipeline{
                '''
             }
       }
-      stage("Deploy"){
-        when{
+      stage('Deploy') {
+        when {
           branch 'main'
         }
-        steps{
-              echo "Deploying ${APP_NAME}"
+        steps {
+              echo "Deploying ${APP_NAME} "
               sh '''
                echo "Deploying successful..."
                sleep 2
                '''
             }
-      port{
-        successs{
+      post {
+        successs {
            echo "pipeline completed successful"
         }
-        failure{
+        failure {
            echo "pipeline failed"
         }
-        always{
+        always {
            echo "pipeline finished"
         }
       }
