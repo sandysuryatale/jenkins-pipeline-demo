@@ -39,6 +39,7 @@ pipeline{
                sleep 2
                '''
             }
+      }
       post {
         successs {
            echo "pipeline completed successful"
@@ -49,7 +50,6 @@ pipeline{
         always {
            echo "pipeline finished"
         }
-      }
       }
     }
 }
