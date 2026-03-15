@@ -7,7 +7,7 @@ pipeline{
       stage("Checkout"){
         steps{
           echo "checking out code from github"
-          Checkout scm
+          checkout scm
         }
       }
       stage("Build"){
