@@ -10,7 +10,7 @@ pipeline{
           Checkout scm
         }
       }
-      stage("Build){
+      stage("Build"){
           steps{
               echo "Building ${APP_NAME}"
               sh '''
